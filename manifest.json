@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "LoR Deck Analyzer",
+  "version": "1.0",
+  "description": "Analyseur de decks de cartes",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.lorcards.fr/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_popup": "popup.html"
+  }
+}

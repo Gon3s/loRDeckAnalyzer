@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            width: 400px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        h2 {
+            color: #ad7d45;
+            margin-bottom: 15px;
+        }
+        
+        .stats-container {
+            margin-top: 15px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .cost-bar {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .cost-label {
+            width: 30px;
+            font-weight: bold;
+            color: #ad7d45;
+        }
+        
+        .bar {
+            background-color: #ad7d45;
+            height: 24px;
+            margin: 0 10px;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .count {
+            width: 30px;
+            color: #ffffff;
+        }
+        
+        .total {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ad7d45;
+            text-align: right;
+        }
+
+        button {
+            background-color: #ad7d45;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #8e6535;
+        }
+    </style>
+</head>
+<body>
+    <h2>LoR Deck Analyzer</h2>
+    <button id="analyze">Analyser le deck</button>
+    <div class="stats-container">
+        <div id="cost-distribution"></div>
+        <div id="total" class="total"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
