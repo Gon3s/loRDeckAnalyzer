@@ -1,0 +1,44 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Déclenche sur les tags qui commencent par 'v'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Update version in manifest
+        run: |
+          VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          jq --arg version "$VERSION" '.version = $version' manifest.json > manifest.json.tmp
+          mv manifest.json.tmp manifest.json
+          
+      - name: Create ZIP file
+        run: |
+          zip -r extension.zip * \
+            -x "*.git*" \
+            -x "*.github*" \
+            -x "README.md" \
+            -x "LICENSE" \
+            -x "__MACOSX" \
+            -x ".*"
+          
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: extension.zip
+          name: Release ${{ github.ref_name }}
+          body: |
+            Release ${{ github.ref_name }}
+            
+            Changes in this version:
+            - Automatic release from tag ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
