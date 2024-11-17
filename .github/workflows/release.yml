@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v*' # Déclenche sur les tags qui commencent par 'v'
+      - '*'
 
 jobs:
   build:
