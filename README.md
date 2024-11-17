@@ -2,6 +2,8 @@
 
 Une extension Chrome pour analyser la distribution des coûts en encre des decks sur [LorCards.fr](https://www.lorcards.fr).
 
+![Screenshot](./doc/screen.png)
+
 ## Fonctionnalités
 
 - Analyse automatique de la distribution des coûts en encre des cartes
