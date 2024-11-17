@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-      - '*'
+      - 'v*' # Déclenche sur les tags qui commencent par 'v'
 
 jobs:
   build:
@@ -28,17 +28,17 @@ jobs:
             -x ".*"
           
       - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
-          files: extension.zip
+          artifacts: "extension.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
           name: Release ${{ github.ref_name }}
           body: |
             Release ${{ github.ref_name }}
             
             Changes in this version:
             - Automatic release from tag ${{ github.ref_name }}
+            
+            SHA: ${{ github.sha }}
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
